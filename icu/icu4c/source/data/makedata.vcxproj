@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D9DF7F2F-93B7-4810-B5CD-96F4F33C079B}</ProjectGuid>
+    <ProjectGuid>{A8303E9F-45CA-4AC4-B35C-1EA3504B4A2F}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
     <ConfigurationType>Makefile</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
@@ -23,10 +23,10 @@
     <OutDir Condition="'$(Platform)'=='Win32'">.\data\tmp\x86\</OutDir>
     <MakeCFG Condition="'$(Platform)'=='Win32'">x86\$(Configuration)</MakeCFG>
     <!-- NMake -->
-    <NMakeBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) DEBUG=$(DebugBuild)</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) clean all</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) clean</NMakeCleanCommandLine>
-    <NMakeOutput/>
+    <NMakeBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" CFG=$(MakeCFG) DEBUG=$(DebugBuild) PLATFORMTOOLSET=$(PlatformToolset) PLATFORM=$(Platform) CONFIGURATION=$(Configuration)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" PLATFORMTOOLSET=$(PlatformToolset) PLATFORM=$(Platform)  CONFIGURATION=$(Configuration) CFG=$(MakeCFG) clean all</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>NMAKE /f makedata.mak ICUMAKE="$(ProjectDir)\" PLATFORMTOOLSET=$(PlatformToolset) PLATFORM=$(Platform)  CONFIGURATION=$(Configuration) CFG=$(MakeCFG) clean</NMakeCleanCommandLine>
+    <NMakeOutput />
     <NMakePreprocessorDefinitions>$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath>$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(NMakeForcedIncludes)</NMakeForcedIncludes>
