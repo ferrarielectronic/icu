@@ -24,8 +24,8 @@
     <OutDir>.\$(Platform)\$(Configuration)\static\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\static\</IntDir>
     <!-- The ICU projects use "Win32" to mean "x86", so we need to special case it. -->
-    <OutDir Condition="'$(Platform)'=='Win32'">.\x86\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Platform)'=='Win32'">.\x86\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Platform)'=='Win32'">.\x86\$(Configuration)\static\</OutDir>
+    <IntDir Condition="'$(Platform)'=='Win32'">.\x86\$(Configuration)\static\</IntDir>
     <!-- Disable Incremental Linking for Release builds as it prevents Link-time Code Generation -->
     <LinkIncremental Condition="'$(Configuration)'=='Debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)'=='Release'">false</LinkIncremental>
