@@ -29,7 +29,7 @@
   <!-- Options that are common to *all* project configurations -->
   <ItemDefinitionGroup>
     <ClCompile>
-       <AdditionalIncludeDirectories>..\..\..\include;..\..\common;..\..\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\include;..\..\common;..\..\i18n;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>U_TOOLUTIL_IMPLEMENTATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <WarningLevel>Level3</WarningLevel>
@@ -80,6 +80,13 @@
       </DataExecutionPrevention>
       <ImportLibrary>..\..\..\lib\icutu.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Message>Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command>xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icutu$(Icumajorversion).dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icutu.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -92,6 +99,13 @@
       </DataExecutionPrevention>
       <ImportLibrary>..\..\..\lib\icutud.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Message>Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command>xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icutu$(Icumajorversion)d.dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icutud.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'x64' project configurations -->
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
@@ -117,6 +131,13 @@
       <ProgramDatabaseFile>.\..\..\..\lib64\icutu.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\lib64\icutu.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Message>Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command>xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icutu$(Icumajorversion).dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icutu.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -127,6 +148,13 @@
       <ProgramDatabaseFile>.\..\..\..\lib64\icutud.pdb</ProgramDatabaseFile>
       <ImportLibrary>..\..\..\lib64\icutud.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Message>Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command>xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icutu$(Icumajorversion)d.dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icutud.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='ARM'">
     <ClCompile>

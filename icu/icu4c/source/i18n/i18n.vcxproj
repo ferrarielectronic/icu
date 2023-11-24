@@ -2,6 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0178B127-6269-407D-B112-93877BB62776}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -70,6 +71,20 @@
       <IgnoreSpecificDefaultLibraries>libucrtd.lib;libucrt.lib</IgnoreSpecificDefaultLibraries>
       <AdditionalOptions>/DEFAULTLIB:ucrtd.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icuin$(Icumajorversion)d.dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icuind.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icuin$(Icumajorversion)d.dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icuind.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <!-- Options that are common to all 'Release' project configurations -->
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -88,6 +103,20 @@
       <IgnoreSpecificDefaultLibraries>libucrtd.lib;libucrt.lib</IgnoreSpecificDefaultLibraries>
       <AdditionalOptions>/DEFAULTLIB:ucrt.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icuin$(Icumajorversion).dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icuin.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copy all relevant files to Ferrari Staging Directory</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcopy "$(SolutionDir)..\..\include\*.*" "$(STAGING_PREFIX)\include\*.*" /s /y /c
+copy "$(SolutionDir)..\..\$(IcuBinOutputDir)\icuin$(Icumajorversion).dll" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\bin\*.*" /y
+copy "$(SolutionDir)..\..\$(IcuLibOutputDir)\icuin.lib" "$(STAGING_PREFIX)\$(Configuration)\$(Platform)$(PlatformToolset)\lib\*.*" /y
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="erarules.cpp" />
