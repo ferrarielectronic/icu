@@ -16,7 +16,7 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir>.\sdata\tmp\$(Platform)\</OutDir>
-    <IntDir>.\sdata\build\</IntDir>
+    <IntDir>.\sdata\build\static</IntDir>
     <MakeCFG>$(Platform)\$(Configuration)</MakeCFG>
     <DebugBuild Condition="'$(Configuration)'=='Debug'">true</DebugBuild>
     <!-- The ICU projects use "Win32" to mean "x86", so we need to special case it. -->
