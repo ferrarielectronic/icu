@@ -445,6 +445,7 @@ icu4j-data-install :
 	copy "$(U_ICUDATA_NAME).dll" "$(ICU_LIB_TARGET)"
 	-@erase "$(U_ICUDATA_NAME).dll"
     @echo copy output to staging dir
+	@if not exist "$(STAGING_PREFIX)\$(CONFIGURATION)\$(PLATFORM)$(PLATFORMTOOLSET)\bin" mkdir "$(STAGING_PREFIX)\$(CONFIGURATION)\$(PLATFORM)$(PLATFORMTOOLSET)\bin"
 	copy "$(ICU_LIB_TARGET)" "$(STAGING_PREFIX)\$(CONFIGURATION)\$(PLATFORM)$(PLATFORMTOOLSET)\bin\*.*" /y
 	copy "$(ICUTMP)\$(ICUPKG).dat" "$(ICUOUT)\$(U_ICUDATA_NAME)$(U_ICUDATA_ENDIAN_SUFFIX).dat"
 	-@erase "$(ICUTMP)\$(ICUPKG).dat"
